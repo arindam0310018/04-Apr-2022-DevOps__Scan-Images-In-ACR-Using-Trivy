@@ -105,8 +105,8 @@ stages:
     #     ContainerName: '$(sacontainername)/$(Date)'
 
 ###################################################################################
-# Cmd in Line 115 - It works on Linux Build Agent because of the Date Format
-# Cmd in Line 116 - It works on Windows Build Agent because of the Date Format
+# Cmd in Line 118 - It works on Linux Build Agent because of the Date Format
+# Cmd in Line 119 - It works on Windows Build Agent because of the Date Format
 ###################################################################################
     - task: AzureCLI@1
       displayName: COPY AQUASEC TRIVY SCAN REPORTS TO BLOB STORAGE
