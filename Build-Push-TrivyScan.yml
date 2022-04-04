@@ -1,0 +1,119 @@
+trigger:
+  none
+
+resources:
+- repo: self
+
+###############################################
+# All Declared Variables are listed below:-
+###############################################
+variables:
+  dockerRegistryServiceConnection: '52409f6c-7855-4be2-a142-7192521b3e3f'
+  imageRepository: 'amimagescantrivy'
+  containerRegistry: 'axsopocapplacr.azurecr.io'
+  storageaccount: 'am4prodvs4core4shell'
+  resourcegroup: 'Demo-Blog-RG'
+  sacontainername: 'trivy-scan-reports'
+  serviceconn: 'amcloud-cicd-service-connection' 
+  dockerfilePath: '$(Build.SourcesDirectory)/ACR+Trivy/Dockerfile'
+  target: $(build.artifactstagingdirectory)
+  artifact: AM
+  tag: '$(Build.BuildId)'
+
+  vmImageName: 'ubuntu-latest'
+
+stages:
+- stage: BUILD
+  displayName: Build and Push Stage
+  jobs:
+  - job: BUILD_JOB
+    displayName: BUILD IMAGE
+    pool:
+      vmImage: $(vmImageName)
+    steps:
+
+#####################################
+# Build and Push the Image to ACR:-
+#####################################    
+    - task: Docker@2
+      displayName: BUILD AND PUSH IMAGE TO ACR
+      inputs:
+        command: buildAndPush
+        repository: $(imageRepository)
+        dockerfile: $(dockerfilePath)
+        containerRegistry: $(dockerRegistryServiceConnection)
+        tags: |
+          $(tag)
+
+#######################################
+# Download and Install Aquasec Trivy:-
+#######################################
+    - task: CmdLine@2
+      displayName: DOWNLOAD AND INSTALL AQUASEC TRIVY
+      inputs:
+        script: |
+         sudo apt-get install wget apt-transport-https gnupg lsb-release
+         wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
+         echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
+         sudo apt-get update
+         sudo apt-get install trivy
+         trivy -v
+         pwd
+
+##################################################################################
+# Execute Trivy Scan and Copy the Scan Results in Artifacts Staging Directory:-
+##################################################################################
+    - task: CmdLine@2
+      displayName: RUN AQUASEC TRIVY SCAN AND COPY TO ARTIFACTS STAGING DIRECTORY
+      inputs:
+        script: |
+          trivy image --exit-code 0 --severity LOW,MEDIUM $(containerRegistry)/$(imageRepository):$(tag) > low-med.txt
+          trivy image --exit-code 1 --severity HIGH,CRITICAL $(containerRegistry)/$(imageRepository):$(tag) > high-critical.txt
+          ls -l
+          cp -rvf *.txt $(target)
+
+##########################
+# Publish the Artifacts:-
+##########################
+    - task: PublishBuildArtifacts@1
+      displayName: PUBLISH ARTIFACTS
+      inputs:
+        targetPath: '$(target)'
+        artifactName: '$(artifact)'
+
+######################################
+# Download the Published Artifacts:-
+######################################
+    - task: DownloadBuildArtifacts@1
+      displayName: DOWNLOAD ARTIFACTS
+      inputs:
+        buildType: 'current'
+        downloadType: 'single'
+        downloadPath: '$(System.ArtifactsDirectory)'
+
+#########################################################
+# The Below Code Snippet did not work becuase it is 
+# only supported by "Windows" Build Agent
+#########################################################    
+    # - task: AzureFileCopy@4
+    #   displayName: COPY AQUASEC TRIVY SCAN REPORTS TO BLOB STORAGE
+    #   inputs:
+    #     SourcePath: '$(System.ArtifactsDirectory)'
+    #     azureSubscription: 'amcloud-cicd-service-connection'
+    #     Destination: 'AzureBlob'
+    #     storage: '$(storageaccount)'
+    #     ContainerName: '$(sacontainername)/$(Date)'
+
+###################################################################################
+# Cmd in Line 115 - It works on Linux Build Agent because of the Date Format
+# Cmd in Line 116 - It works on Windows Build Agent because of the Date Format
+###################################################################################
+    - task: AzureCLI@1
+      displayName: COPY AQUASEC TRIVY SCAN REPORTS TO BLOB STORAGE
+      inputs:
+        azureSubscription: '$(serviceconn)'
+        scriptType: ps
+        scriptLocation: inlineScript
+        inlineScript: |
+          az storage blob upload-batch -d $(sacontainername)/$(date "+%d-%m-%Y_%H-%M-%S") --account-name $(storageaccount) --account-key $(az storage account keys list -g $(resourcegroup) -n $(storageaccount) --query [0].value -o tsv) -s $(System.ArtifactsDirectory)/AM
+#         az storage blob upload-batch -d trivy-scan-reports/$(Get-Date -Format dd-MM-yyyy_HH-mm) --account-name $(storageaccount) --account-key $(az storage account keys list -g $(resourcegroup) -n $(storageaccount) --query [0].value -o tsv) -s $(System.ArtifactsDirectory)/AM
