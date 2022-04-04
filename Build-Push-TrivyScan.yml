@@ -10,7 +10,7 @@ resources:
 variables:
   dockerRegistryServiceConnection: '52409f6c-7855-4be2-a142-7192521b3e3f'
   imageRepository: 'amimagescantrivy'
-  containerRegistry: 'axsopocapplacr.azurecr.io'
+  containerRegistry: 'ampocapplacr.azurecr.io'
   storageaccount: 'am4prodvs4core4shell'
   resourcegroup: 'Demo-Blog-RG'
   sacontainername: 'trivy-scan-reports'
