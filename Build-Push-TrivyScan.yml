@@ -92,7 +92,7 @@ stages:
         downloadPath: '$(System.ArtifactsDirectory)'
 
 #########################################################
-# The Below Code Snippet did not work becuase it is 
+# The Below Code Snippet did not work because it is 
 # only supported by "Windows" Build Agent
 #########################################################    
     # - task: AzureFileCopy@4
