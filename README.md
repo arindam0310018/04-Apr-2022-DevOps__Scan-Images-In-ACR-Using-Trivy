@@ -27,7 +27,7 @@ I had the Privilege to talk on this topic in __TWO__ Azure Communities:-
 | __LIVE RECORDED SESSION:-__ |
 | __LIVE DEMO__ was Recorded as part of my Presentation. |
 | Duration of My Demo = __52 Mins 45 Secs__ |
-| {% youtube 6fGGT1uBImw %} |
+| [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/6fGGT1uBImw/0.jpg)](https://www.youtube.com/watch?v=6fGGT1uBImw) |
 
 | __REQUIREMENTS:-__ |
 | --------- |
