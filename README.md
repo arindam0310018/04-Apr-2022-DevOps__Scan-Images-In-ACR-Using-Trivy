@@ -8,7 +8,7 @@ I had the Privilege to talk on this topic in __TWO__ Azure Communities:-
 
 | __NAME OF THE AZURE COMMUNITY__ | __TYPE OF SPEAKER SESSION__ |
 | --------- | --------- |
-| __Azure Zurich User Group__ | __In Person__ |
+| __Microsoft Azure Zurich User Group__ | __In Person__ |
 | __Microsoft Azure Pakistan Community__ | __Virtual__ |
  
 | __IN-PERSON SESSION:-__ |
