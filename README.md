@@ -13,10 +13,10 @@ I had the Privilege to talk on this topic in __TWO__ Azure Communities:-
  
 | __IN-PERSON SESSION:-__ |
 | --------- |
-| I presented ACR (Architecture and Best Practices) + Scan Images in ACR Using TRIVY and DEVOPS in __AZURE ZURICH USER GROUP__ Forum/Platform |
+| I presented ACR (Architecture and Best Practices) + Scan Images in ACR Using TRIVY and DEVOPS in __MICROSOFT AZURE ZURICH USER GROUP__ Forum/Platform |
 | __Event Meetup Announcement:-__ |
 | ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/jtq9o4y4z95uziaygvp0.png) |
-| __Moment Captured with Founder of Azure Zurich User Group "MANUEL MEYER", Co-organizer "THOMAS HAFERMALZ" and Co-Speaker "MOHAMMAD NOFAL" :-__ |
+| __Moment Captured with Founder of MICROSOFT AZURE ZURICH USER GROUP "MANUEL MEYER", Co-organizer "THOMAS HAFERMALZ" and Co-Speaker "MOHAMMAD NOFAL":-__ |
 | ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/kcrq2xc69sw5qyr1u7jw.png) |
 
 | __VIRTUAL SESSION:-__ |
