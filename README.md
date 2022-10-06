@@ -4,12 +4,13 @@ Greetings my fellow Technology Advocates and Specialists.
 
 In this Session, I will demonstrate how to __Scan Docker Images__ in __AZURE CONTAINER REGISTRY__ with __AQUASEC TRIVY__ using __AZURE DEVOPS PIPELINES__
 
-I had the Privilege to talk on this topic in __TWO__ Azure Communities:-
+I had the Privilege to talk on this topic in __THREE__ Azure Communities:-
 
 | __NAME OF THE AZURE COMMUNITY__ | __TYPE OF SPEAKER SESSION__ |
 | --------- | --------- |
 | __Microsoft Azure Zurich User Group__ | __In Person__ |
 | __Microsoft Azure Pakistan Community__ | __Virtual__ |
+| __Cloud Lunch and Learn__ | __Virtual__ |
  
 | __IN-PERSON SESSION:-__ |
 | --------- |
@@ -18,9 +19,7 @@ I had the Privilege to talk on this topic in __TWO__ Azure Communities:-
 | ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/jtq9o4y4z95uziaygvp0.png) |
 | __Moment Captured with Founder of MICROSOFT AZURE ZURICH USER GROUP "MANUEL MEYER", Co-organizer "THOMAS HAFERMALZ" and Co-Speaker "MOHAMMAD NOFAL":-__ |
 | ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/kcrq2xc69sw5qyr1u7jw.png) |
-
 | __VIRTUAL SESSION:-__ |
-| --------- |
 | I presented ACR (Architecture and Best Practices) + Scan Images in ACR Using TRIVY and DEVOPS in __MICROSOFT AZURE PAKISTAN COMMUNITY__ Forum/Platform |
 | __Event Meetup Announcement:-__ |
 | ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/0qsjncev5uboixqnza50.png) |
@@ -28,6 +27,10 @@ I had the Privilege to talk on this topic in __TWO__ Azure Communities:-
 | __LIVE DEMO__ was Recorded as part of my Presentation. |
 | Duration of My Demo = __52 Mins 45 Secs__ |
 | [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/6fGGT1uBImw/0.jpg)](https://www.youtube.com/watch?v=6fGGT1uBImw) |
+| __VIRTUAL SESSION:-__ |
+| __LIVE DEMO__ was Recorded as part of my Presentation in __CLOUD LUNCH AND LEARN__ Forum/Platform |
+| Duration of My Demo = __44 Mins 16 Secs__ |
+| [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/0hFXX3k2YnM/0.jpg)](https://www.youtube.com/watch?v=0hFXX3k2YnM) |
 
 | __REQUIREMENTS:-__ |
 | --------- |
@@ -258,3 +261,7 @@ CVE-2021-23839
 | --------- |
 | ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/y83jm776l1ux8xlqj1yc.png) |
 | __Note-__ The Only Reason we see 2 CVEs with Severity MEDIUM is because they are commented out in __.trivyignore__ file |
+
+Hope You Enjoyed the Session!!!
+
+__Stay Safe | Keep Learning | Spread Knowledge__
